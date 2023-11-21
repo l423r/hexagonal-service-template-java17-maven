@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hexagonal-template
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 8080
+  error:
+    include-message: always
+  shutdown: graceful
+  servlet:
+    session:
+      cookie:
+        secure: true
+    context-path: /hexagonal-template
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: httptrace,loggers,health,info,metrics,prometheus
+  endpoint:
+    loggers:
+      enabled: true
+  server:
+    port: 7080
